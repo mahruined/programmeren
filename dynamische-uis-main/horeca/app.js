@@ -1,9 +1,17 @@
 const menu = {
   bier: 2.50,
   wijn: 3.00,
-  fris: 2.00
+  fris: 2.00,
+  melk: 1.20,
 };
-
+drankjes = ''
+for (const key in menu){
+  if(drankjes != ''){
+    drankjes += ', ';
+  }  
+  drankjes += key
+}
+console.log(drankjes)
 const bestellingen = {};
 
 const getElement = id => document.getElementById(id);
@@ -53,7 +61,7 @@ const showBill = () => {
 getElement("bestellen").addEventListener("click", function() {
   let invoer;
   do {
-    invoer = prompt("Wat wilt u bestellen? (bier, wijn of fris, of typ 'done' om af te rekenen)");
+    invoer = prompt(`Wat wilt u bestellen? ${drankjes} of typ 'done' om af te rekenen)`);
     if (invoer === null) {
       return;
     }
